@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">AppBarbershop</string>
+
+    <string-array name="cabelo">
+        <item>Opções de Cabelo...</item>
+        <item>Máquina</item>
+        <item>Social</item>
+        <item>Acabamento</item>
+        <item>Infantil</item>
+    </string-array>
+
+    <string-array name="barba">
+        <item>Opções de Barba...</item>
+        <item>Simples</item>
+        <item>Com toalha quente</item>
+        <item>Bigode</item>
+    </string-array>
+
+    <string-array name="outros">
+        <item>Outros serviçoes...</item>
+        <item>Hidratação</item>
+        <item>Coloração</item>
+        <item>Progressiva</item>
+    </string-array>
+
+</resources>

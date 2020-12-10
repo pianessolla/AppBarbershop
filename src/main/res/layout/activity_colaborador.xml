@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColaboradorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/navalha"
+            android:padding="20dp">
+        </ImageView>
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Faça o login para continuar:"
+        android:padding="20dp"
+        android:textColor="#ccc"
+        android:textSize="20dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/etEmail2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/campos"
+        android:hint="E-mail:"
+        android:inputType="textEmailAddress"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/etSenha2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/campos"
+        android:hint="Senha:"
+        android:inputType="textPassword"
+        >
+    </EditText>
+
+        <Button
+            android:id="@+id/btnEntrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:backgroundTint="#A6918686"
+            android:fontFamily="serif"
+            android:text="ENTRAR"
+            android:textColor="#000" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
