@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="#000"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="20dp">
 
         <ImageView
             android:layout_width="150dp"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Agenda do dia!"
+            android:text="Confira sua agenda:"
             android:padding="20dp"
             android:textColor="#ccc"
             android:textSize="20dp">
@@ -34,8 +34,23 @@
         <ListView
             android:id="@+id/lvAgenda"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#A6918686">
         </ListView>
+
+        <Button
+            android:id="@+id/btFechar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:backgroundTint="#ccc"
+            android:text="FECHAR"
+            android:textColor="#000"
+            android:textSize="20sp">
+
+        </Button>
 
 
 

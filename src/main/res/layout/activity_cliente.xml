@@ -11,20 +11,17 @@
         android:layout_height="match_parent"
         android:background="#000"
         android:orientation="vertical"
-        android:padding="10dp">
-
+        android:padding="20dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/cadastro"
+            android:layout_gravity="center"
             android:padding="20dp">
         </ImageView>
 
-
         <TextView
-            android:id="@+id/textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
@@ -36,28 +33,28 @@
         </TextView>
 
         <EditText
-            android:id="@+id/etEmail2"
+            android:id="@+id/etEmail"
+            style="@style/campos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/campos"
             android:hint="E-mail:"
-            android:inputType="textEmailAddress"
-            >
+            android:inputType="textEmailAddress">
+
         </EditText>
 
         <EditText
-            android:id="@+id/etSenha2"
+            android:id="@+id/etSenha"
+            style="@style/campos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/campos"
             android:hint="Senha:"
-            android:inputType="textPassword"
-            >
+            android:inputType="textPassword">
+
         </EditText>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center">
 
             <Button
@@ -69,7 +66,7 @@
                 android:backgroundTint="#A6918686"
                 android:fontFamily="serif"
                 android:text="Cadastrar"
-                android:textColor="#000"/>
+                android:textColor="#000" />
 
             <Button
                 android:id="@+id/btnJaSouCliente"
@@ -82,11 +79,23 @@
                 android:text="Já sou cliente"
                 android:textColor="#000"/>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/saida"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/voltar"
+                android:scaleType="centerInside"
+                android:backgroundTint="#000000">
+            </ImageButton>
 
         </LinearLayout>
 
+
     </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

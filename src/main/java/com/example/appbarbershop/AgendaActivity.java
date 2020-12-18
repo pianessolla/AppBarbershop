@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -23,6 +25,7 @@ public class AgendaActivity extends AppCompatActivity {
     private ListView lvAgenda;
     private List<Agendamento> lista;
     private ArrayAdapter adapter;
+    private Button btFechar;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -40,6 +43,14 @@ public class AgendaActivity extends AppCompatActivity {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lista);
         lvAgenda.setAdapter(adapter);
 
+        btFechar = findViewById(R.id.btFechar);
+
+        btFechar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

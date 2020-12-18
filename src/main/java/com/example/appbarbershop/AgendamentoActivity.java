@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ public class AgendamentoActivity extends AppCompatActivity {
     private EditText etNome, etTelefone, etCPF, etData, etHora;
     private Spinner spCabelo, spBarba, spOutros;
     private Button btEnviar;
-    //private AlertDialog alertDialog;
+    private ImageButton btSair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +38,19 @@ public class AgendamentoActivity extends AppCompatActivity {
         spOutros = findViewById(R.id.spOutros);
 
         btEnviar = findViewById(R.id.btEnviar);
+        btSair = findViewById(R.id.btSair);
 
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enviar();
-                //confirmar();
+                confirmar();
+            }
+        });
+
+        btSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -70,35 +78,43 @@ public class AgendamentoActivity extends AppCompatActivity {
              agendamento.cabelo = cabelo;
              agendamento.barba = barba;
              agendamento.outros = outros;
-         }
-
+         } else {
+             Toast.makeText(AgendamentoActivity.this, "Informe o nome para prosseguir", Toast.LENGTH_LONG).show();
+         };
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference = database.getReference();
             reference.child("agendamentos").push().setValue(agendamento);
-            finish();
 
-        }else {
-            Toast.makeText(AgendamentoActivity.this, "Informe o nome para prosseguir", Toast.LENGTH_LONG).show();
-        };
-
+        }
 
     }
 
-//    //private void confirmar() {
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Confira seu agendamento:");
-//        builder.setMessage(etData.toString() + etHora.toString() + spCabelo.toString() + spBarba.toString() + spOutros.toString());
-//        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//            }
-//        });
-//
-//        alertDialog = builder.create();
-//        alertDialog.show();
-//    }
+    private void confirmar() {
+        String data = etData.getText().toString();
+        String hora = etHora.getText().toString();
+
+        String cabelo = spCabelo.getSelectedItem().toString();
+        String barba = spBarba.getSelectedItem().toString();
+        String outros = spOutros.getSelectedItem().toString();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confira seu agendamento:");
+        builder.setMessage(data + "-" + hora + "\n" + cabelo + "\n" + barba + "\n" + outros);
+        builder.setPositiveButton("ENVIAR", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                enviar();
+                finish();
+            }
+        });
+        builder.setNegativeButton("VOLTAR", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
+    }
 
 
 }

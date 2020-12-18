@@ -6,6 +6,6 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return nome + "/n" + data + "/n" + cabelo ;
+        return data + "-" + hora + "\n" + nome + "\n" + cabelo +"-"+barba +"-"+outros ;
     }
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class ColaboradorActivity extends AppCompatActivity {
 
     private EditText etEmail2, etSenha2;
-    protected Button btnEntrar;
+    private Button btEntrar;
+    private ImageButton btSaida;
 
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authStateListener;
@@ -32,7 +34,8 @@ public class ColaboradorActivity extends AppCompatActivity {
 
         etEmail2 = findViewById(R.id.etEmail2);
         etSenha2 = findViewById(R.id.etSenha2);
-        btnEntrar = findViewById(R.id.btnEntrar);
+        btEntrar = findViewById(R.id.btEntrar);
+        btSaida = findViewById(R.id.btSaida);
 
         auth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -48,13 +51,17 @@ public class ColaboradorActivity extends AppCompatActivity {
             }
         };
 
-        btnEntrar.setOnClickListener(new View.OnClickListener() {
+        btEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // entrar();
-                Intent intent = new Intent(ColaboradorActivity.this, AgendaActivity.class);
-                startActivity(intent);
+               entrar();
+            }
+        });
 
+        btSaida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -70,6 +77,11 @@ public class ColaboradorActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()){
                         Toast.makeText(ColaboradorActivity.this, "E-mail e/ou senha Inválido(s)", Toast.LENGTH_LONG).show();
+                    }
+                    FirebaseUser user = auth.getCurrentUser();
+                    if(user!=null) {
+                        Intent intent = new Intent(ColaboradorActivity.this, AgendaActivity.class);
+                        startActivity(intent);
                     }
                 }
             });
