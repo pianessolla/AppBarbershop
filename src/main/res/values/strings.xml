@@ -7,6 +7,7 @@
         <item>Social</item>
         <item>Acabamento</item>
         <item>Infantil</item>
+        <item>Não</item>
     </string-array>
 
     <string-array name="barba">
@@ -14,6 +15,7 @@
         <item>Simples</item>
         <item>Com toalha quente</item>
         <item>Bigode</item>
+        <item>Não</item>
     </string-array>
 
     <string-array name="outros">
@@ -21,6 +23,7 @@
         <item>Hidratação</item>
         <item>Coloração</item>
         <item>Progressiva</item>
+        <item>Não</item>
     </string-array>
 
 </resources>

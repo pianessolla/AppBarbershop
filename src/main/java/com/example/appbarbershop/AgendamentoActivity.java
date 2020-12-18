@@ -29,9 +29,13 @@ public class AgendamentoActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.etNome);
         etTelefone = findViewById(R.id.etTelefone);
+        etTelefone.addTextChangedListener(Mask.insert(Mask.CELULAR_MASK, etTelefone));
         etCPF = findViewById(R.id.etCPF);
+        etCPF.addTextChangedListener(Mask.insert(Mask.CPF_MASK, etCPF));
         etData = findViewById(R.id.etData);
+        etData.addTextChangedListener(Mask.insert(Mask.DATA_MASK, etData));
         etHora = findViewById(R.id.etHora);
+        etHora.addTextChangedListener(Mask.insert(Mask.HORA_MASK, etHora));
 
         spCabelo = findViewById(R.id.spCabelo);
         spBarba = findViewById(R.id.spBarba);
