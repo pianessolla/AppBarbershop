@@ -20,22 +20,23 @@ import com.google.firebase.auth.FirebaseUser;
 public class ClienteActivity extends AppCompatActivity {
 
     private EditText etEmail, etSenha;
-    private Button btnCadastrar, btnJaSouCliente;
+    private Button btCadastrar, btJaSouCliente;
     private ImageButton saida;
 
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authStateListener;
     FirebaseUser user;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
 
-        etEmail = findViewById(R.id.etEmail2);
-        etSenha = findViewById(R.id.etSenha2);
-        btnCadastrar = findViewById(R.id.btnCadastrar);
-        btnJaSouCliente = findViewById(R.id.btnJaSouCliente);
+        etEmail = findViewById(R.id.etEmail);
+        etSenha = findViewById(R.id.etSenha);
+        btCadastrar = findViewById(R.id.btnCadastrar);
+        btJaSouCliente = findViewById(R.id.btnJaSouCliente);
         saida = findViewById(R.id.saida);
 
         auth = FirebaseAuth.getInstance();
@@ -44,23 +45,23 @@ public class ClienteActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = auth.getCurrentUser();
 
-                if(user!=null){
+                if (user != null) {
                     Intent intent = new Intent(ClienteActivity.this, AgendamentoActivity.class);
                     startActivity(intent);
-                }else {
+                } else {
                     Toast.makeText(ClienteActivity.this, "Erro no login!", Toast.LENGTH_LONG).show();
                 }
             }
         };
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cadastrar();
             }
         });
 
-        btnJaSouCliente.setOnClickListener(new View.OnClickListener() {
+        btJaSouCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logar();
@@ -76,18 +77,17 @@ public class ClienteActivity extends AppCompatActivity {
 
     }
 
-    private void cadastrar(){
+    private void cadastrar() {
         String email = etEmail.getText().toString();
         String senha = etSenha.getText().toString();
 
-        if (!email.isEmpty() && !senha.isEmpty()){
+        if (!email.isEmpty() && !senha.isEmpty()) {
             auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (!task.isSuccessful()){
+                    if (!task.isSuccessful()) {
                         Toast.makeText(ClienteActivity.this, "E-mail e/ou senha Inválido(s)", Toast.LENGTH_LONG).show();
-                    }
-                    else {
+                    }  else {
                         user = auth.getCurrentUser();
                         Toast.makeText(ClienteActivity.this, "Cadastro efetuado com sucesso", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(ClienteActivity.this, AgendamentoActivity.class);
